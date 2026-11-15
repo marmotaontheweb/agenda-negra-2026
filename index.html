@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda Consciência Negra 2026 | 16 a 22 de Novembro - Rio de Janeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Padrão Geométrico Afro-Brasileiro no Topo -->
+  <div class="afro-pattern-bar" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="badge-row">
+        <span class="pill-badge">📅 16 a 22 de Novembro de 2026</span>
+        <span class="pill-badge pill-outline">📍 Rio de Janeiro - RJ</span>
+      </div>
+      <h1>Semana da <span>Consciência Negra</span> 2026</h1>
+      <p class="hero-subtitle">
+        Programação cultural completa de segunda a domingo: rodas de samba, cortejos, exposições, feiras afro-empreendedoras, debates e celebrações da ancestralidade no Rio de Janeiro.
+      </p>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <strong>7 Dias</strong>
+          <span>de programação</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <strong>22+ Atrações</strong>
+          <span>culturais e gratuitas</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <strong>20/11 (Sexta)</strong>
+          <span>Feriado Nacional</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Barra de Controles: Filtro por Dia, Categoria e Busca -->
+    <section class="controls-section" aria-label="Filtros da agenda">
+      <div class="controls-top">
+        <div class="search-wrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Buscar por evento, artista (ex: Sombrinha, Toni Garrido), bairro ou local..."
+            aria-label="Buscar eventos"
+          />
+        </div>
+
+        <div class="category-filter-wrapper">
+          <select id="categorySelect" aria-label="Filtrar por categoria">
+            <option value="all">Todas as categorias</option>
+            <option value="Música & Samba">🎵 Música & Samba</option>
+            <option value="Arte & Exposição">🎨 Arte & Exposição</option>
+            <option value="Feira & Empreendedorismo">🛍️ Feira & Empreendedorismo</option>
+            <option value="Debate & Memória">🗣️ Debate & Memória</option>
+            <option value="Infantil & Família">👧 Infantil & Família</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Navegação rápida por Dia -->
+      <div class="days-nav" id="daysNav" role="tablist" aria-label="Selecionar dia da semana">
+        <button class="day-tab active" data-day="all" role="tab" aria-selected="true">
+          <span class="tab-label">Todos os Dias</span>
+          <span class="tab-date">16 a 22/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-16" role="tab" aria-selected="false">
+          <span class="tab-label">Segunda</span>
+          <span class="tab-date">16/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-17" role="tab" aria-selected="false">
+          <span class="tab-label">Terça</span>
+          <span class="tab-date">17/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-18" role="tab" aria-selected="false">
+          <span class="tab-label">Quarta</span>
+          <span class="tab-date">18/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-19" role="tab" aria-selected="false">
+          <span class="tab-label">Quinta</span>
+          <span class="tab-date">19/11</span>
+        </button>
+        <button class="day-tab highlight-holiday" data-day="2026-11-20" role="tab" aria-selected="false">
+          <span class="tab-badge">Feriado ★</span>
+          <span class="tab-label">Sexta</span>
+          <span class="tab-date">20/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-21" role="tab" aria-selected="false">
+          <span class="tab-label">Sábado</span>
+          <span class="tab-date">21/11</span>
+        </button>
+        <button class="day-tab" data-day="2026-11-22" role="tab" aria-selected="false">
+          <span class="tab-label">Domingo</span>
+          <span class="tab-date">22/11</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Lista de Eventos Organizada por Dia -->
+    <div id="scheduleContainer" class="schedule-container"></div>
+
+    <!-- Fontes e Links de Consulta -->
+    <section class="sources-section" id="fontes">
+      <div class="sources-card">
+        <h2>🔗 Fontes Oficiais e Links de Consulta</h2>
+        <p>Confira as páginas oficiais de onde a programação foi consolidada e retire seus ingressos gratuitos quando aplicável:</p>
+        <div class="sources-grid">
+          <a href="https://www.sympla.com.br/evento/festival-terreiro-20-11-praca-das-juras-sombrinha-jongo-da-serrinha-terreiro-de-crioulo/3545289" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Sympla</span>
+            <strong>Festival Terreiro 20/11 – Praça das Juras</strong>
+            <span>Terreiro de Crioulo, Sombrinha e Jongo da Serrinha</span>
+          </a>
+          <a href="https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/circuito-cultural-comeca-no-rio-com-celebracao-da-consciencia-negra" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Agência Brasil (EBC)</span>
+            <strong>Circuito Cultural Instituto 12 – Conexões Criativas</strong>
+            <span>Panmela Castro, Baque Mulher e Toni Garrido no Leblon</span>
+          </a>
+          <a href="https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Visit Rio</span>
+            <strong>Guia Oficial do Feriado da Consciência Negra no Rio</strong>
+            <span>Roteiros culturais, Pequena África, museus e shows</span>
+          </a>
+          <a href="https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Sympla • MUHCAB</span>
+            <strong>Programação e Ingressos – MUHCAB (Gamboa)</strong>
+            <span>Homenagens a Conceição Evaristo e Dom Filó, Oficina Saberes do Ventre e Feijoada</span>
+          </a>
+          <a href="https://www.instagram.com/p/DfhxoXLTSfC/" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Instagram</span>
+            <strong>Publicação Oficial (@p/DfhxoXLTSfC)</strong>
+            <span>Divulgação cultural e agenda da Consciência Negra</span>
+          </a>
+          <a href="https://www.instagram.com/p/DfaofGUomT6/" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Instagram</span>
+            <strong>Publicação Oficial (@p/DfaofGUomT6)</strong>
+            <span>Destaques da programação e Casa Savana / Poeira Pura</span>
+          </a>
+          <a href="https://www.instagram.com/p/DfNmDW5o38S/?img_index=10" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Instagram</span>
+            <strong>Carrossel da Programação (@p/DfNmDW5o38S)</strong>
+            <span>Confira o carrossel completo no Instagram (img_index=10)</span>
+          </a>
+          <a href="https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj" target="_blank" rel="noopener noreferrer" class="source-link-card">
+            <span class="source-tag">Prefeitura do Rio (Sedhir)</span>
+            <strong>Secretaria Municipal de Direitos Humanos e Igualdade Racial</strong>
+            <span>Programação oficial da Semana da Consciência Negra e Comdedine-Rio</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="afro-pattern-bar" aria-hidden="true"></div>
+    <div class="container footer-inner">
+      <p><strong>Agenda Cultural – Semana da Consciência Negra 2026</strong> • Rio de Janeiro, RJ (16 a 22 de novembro de 2026)</p>
+      <p class="footer-note">A maioria dos eventos possui entrada gratuita. Recomendamos chegar com antecedência ou verificar a retirada prévia de ingressos no Sympla.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
