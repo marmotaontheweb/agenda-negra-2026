@@ -8,9 +8,11 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Abertura Oficial da Semana da Consciência Negra 2026",
         category: "Música & Samba",
-        time: "A partir das 10h",
+        time: "A partir das 10h00",
         location: "Museu de Arte Moderna (MAM Rio) – Parque do Flamengo",
         price: "Entrada Gratuita",
         description:
@@ -26,9 +28,11 @@ const scheduleData = [
         sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
       },
       {
+        startTime: "19:00",
+        startLabel: "19h00",
         title: "DejaVu Session na Casa Savana",
         category: "Música & Samba",
-        time: "A partir das 19h",
+        time: "A partir das 19h00",
         location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
         price: "Consulte Local",
         description:
@@ -52,9 +56,11 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Feira de Empreendedorismo Afro-Brasileiro & Cinema na Praça",
         category: "Feira & Empreendedorismo",
-        time: "10h às 17h",
+        time: "10h00 às 17h00",
         location: "Praça Tiradentes – Centro, Rio de Janeiro",
         price: "Entrada Gratuita",
         description:
@@ -68,9 +74,11 @@ const scheduleData = [
         sourceUrl: "https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj"
       },
       {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Ação Social e Atendimento Jurídico Antirracista",
         category: "Debate & Memória",
-        time: "10h às 16h",
+        time: "10h00 às 16h00",
         location: "Praça Tiradentes – Centro, Rio de Janeiro",
         price: "Atendimento Gratuito",
         description:
@@ -94,42 +102,11 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
-        title: "Feijoada Cultural, Roda de Samba e Vizinha Faladeira no MUHCAB",
-        category: "Música & Samba",
-        time: "12h (Feijoada) | 16h30 (Roda de Samba) | 19h (Vizinha Faladeira)",
-        location: "MUHCAB (Museu da História e da Cultura Afro-Brasileira) – Rua Pedro Ernesto, 80, Gamboa",
-        price: "Gratuito / Sympla",
-        description:
-          "Programação completa no MUHCAB reunindo gastronomia ancestral com feijoada ao meio-dia, roda de samba a partir das 16h30 e apresentação especial da tradicional escola de samba Vizinha Faladeira às 19h.",
-        highlights: [
-          "Feijoada no MUHCAB",
-          "Roda de Samba (16h30)",
-          "GRES Vizinha Faladeira (19h)",
-          "Pequena África"
-        ],
-        sourceName: "Sympla • MUHCAB",
-        sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
-      },
-      {
-        title: "Quintal da Magia – Quintas Intenções na Casa Savana",
-        category: "Música & Samba",
-        time: "A partir das 19h",
-        location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
-        price: "Consulte Local",
-        description:
-          "Noite de samba e pagode na Casa Savana celebrando a semana da Consciência Negra em um dos casarões históricos da Rua Camerino.",
-        highlights: [
-          "Casa Savana",
-          "Quintal da Magia",
-          "Samba & Pagode"
-        ],
-        sourceName: "Instagram / Casa Savana",
-        sourceUrl: "https://www.instagram.com/p/DfaofGUomT6/"
-      },
-      {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Circuito de Feiras Afro e Oficinas na Praça Tiradentes",
         category: "Feira & Empreendedorismo",
-        time: "10h às 17h",
+        time: "10h00 às 17h00",
         location: "Praça Tiradentes – Centro, Rio de Janeiro",
         price: "Entrada Gratuita",
         description:
@@ -141,6 +118,43 @@ const scheduleData = [
         ],
         sourceName: "Sedhir-RJ / Comdedine-Rio",
         sourceUrl: "https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj"
+      },
+      {
+        startTime: "12:00",
+        startLabel: "12h00",
+        title: "Feijoada Cultural, Roda de Samba e Vizinha Faladeira no MUHCAB",
+        category: "Música & Samba",
+        time: "12h00 (Feijoada) | 16h30 (Roda de Samba) | 19h00 (Vizinha Faladeira)",
+        location: "MUHCAB (Museu da História e da Cultura Afro-Brasileira) – Rua Pedro Ernesto, 80, Gamboa",
+        price: "Gratuito / Sympla",
+        description:
+          "Programação completa no MUHCAB reunindo gastronomia ancestral com feijoada ao meio-dia, roda de samba a partir das 16h30 e apresentação especial da tradicional escola de samba Vizinha Faladeira às 19h.",
+        highlights: [
+          "Feijoada no MUHCAB (12h)",
+          "Roda de Samba (16h30)",
+          "GRES Vizinha Faladeira (19h)",
+          "Pequena África"
+        ],
+        sourceName: "Sympla • MUHCAB",
+        sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+      },
+      {
+        startTime: "19:00",
+        startLabel: "19h00",
+        title: "Quintal da Magia – Quintas Intenções na Casa Savana",
+        category: "Música & Samba",
+        time: "A partir das 19h00",
+        location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
+        price: "Consulte Local",
+        description:
+          "Noite de samba e pagode na Casa Savana celebrando a semana da Consciência Negra em um dos casarões históricos da Rua Camerino.",
+        highlights: [
+          "Casa Savana",
+          "Quintal da Magia",
+          "Samba & Pagode"
+        ],
+        sourceName: "Instagram / Casa Savana",
+        sourceUrl: "https://www.instagram.com/p/DfaofGUomT6/"
       }
     ]
   },
@@ -153,9 +167,11 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Inauguração Oficial do Busto de Dandara dos Palmares",
         category: "Debate & Memória",
-        time: "A partir das 10h",
+        time: "A partir das 10h00",
         location: "Ponto Chic – Padre Miguel / Realengo (Zona Oeste)",
         price: "Entrada Gratuita",
         description:
@@ -169,9 +185,29 @@ const scheduleData = [
         sourceUrl: "https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj"
       },
       {
+        startTime: "10:00",
+        startLabel: "10h00",
+        title: "Entrega do Troféu Cultura Negra no Carnaval & Feira Afro",
+        category: "Música & Samba",
+        time: "10h00 às 17h00",
+        location: "Praça Tiradentes – Centro, Rio de Janeiro",
+        price: "Entrada Gratuita",
+        description:
+          "Homenagem e entrega do Troféu Cultura Negra no Carnaval a baluartes, sambistas e agremiações que mantêm viva a matriz africana do Carnaval carioca.",
+        highlights: [
+          "Premiação Especial",
+          "Baluartes do Carnaval",
+          "Feira Afro"
+        ],
+        sourceName: "Sedhir-RJ / Comdedine-Rio",
+        sourceUrl: "https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj"
+      },
+      {
+        startTime: "14:00",
+        startLabel: "14h00",
         title: "Painéis de Debates no MUHCAB: Indústria da Música, Marketing e Empreendedorismo",
         category: "Debate & Memória",
-        time: "14h às 18h",
+        time: "14h00 às 18h00",
         location: "MUHCAB – Rua Pedro Ernesto, 80, Gamboa",
         price: "Gratuito / Sympla",
         description:
@@ -184,22 +220,6 @@ const scheduleData = [
         ],
         sourceName: "Sympla • MUHCAB",
         sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
-      },
-      {
-        title: "Entrega do Troféu Cultura Negra no Carnaval",
-        category: "Música & Samba",
-        time: "10h às 17h",
-        location: "Praça Tiradentes – Centro, Rio de Janeiro",
-        price: "Entrada Gratuita",
-        description:
-          "Homenagem e entrega do Troféu Cultura Negra no Carnaval a baluartes, sambistas e agremiações que mantêm viva a matriz africana do Carnaval carioca.",
-        highlights: [
-          "Premiação Especial",
-          "Baluartes do Carnaval",
-          "Feira Afro"
-        ],
-        sourceName: "Sedhir-RJ / Comdedine-Rio",
-        sourceUrl: "https://www.google.com/search?q=secretaria+de+direitos+humanos+e+igualdade+racial+rj"
       }
     ]
   },
@@ -212,26 +232,47 @@ const scheduleData = [
     isHoliday: true,
     events: [
       {
-        title: "Samba do Poeira Pura na Casa Savana",
+        startTime: "10:00",
+        startLabel: "10h00",
+        title: "Cortejo do Afoxé Filhos de Gandhi e Lavagem da Praça Tiradentes",
         category: "Música & Samba",
-        time: "20h às 03h",
-        location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
-        price: "Ingressos / Lista via Instagram",
+        time: "10h00 às 18h00",
+        location: "Praça Tiradentes (Centro) e Palcos na Zona Oeste (Realengo, Vila Aliança e Santa Cruz)",
+        price: "Entrada Gratuita",
         description:
-          "Edição especial de Dia da Consciência Negra do tradicional Samba do Poeira Pura na Casa Savana! Idealizada pelos músicos Rogério Família e Mateus Professor, a roda celebra o samba de raiz, a ancestralidade e a resistência preta no coração da Pequena África.",
+          "Ponto alto das celebrações públicas do feriado de 20 de novembro: lavagem simbólica da Praça Tiradentes, cortejo do tradicional Afoxé Filhos de Gandhi, feiras gastronômicas e shows simultâneos.",
         highlights: [
-          "Poeira Pura",
-          "Casa Savana (20h)",
-          "Rogério Família & Mateus Professor",
-          "Samba e Ancestralidade"
+          "Afoxé Filhos de Gandhi",
+          "Lavagem Simbólica",
+          "Shows de Rua"
         ],
-        sourceName: "Instagram (@p/DfaofGUomT6)",
-        sourceUrl: "https://www.instagram.com/p/DfaofGUomT6/"
+        sourceName: "Sedhir-RJ / Instagram (@p/DfhxoXLTSfC)",
+        sourceUrl: "https://www.instagram.com/p/DfhxoXLTSfC/"
       },
       {
+        startTime: "10:30",
+        startLabel: "10h30",
+        title: "Circuito Cultural Instituto 12 – Exposição 'Reconexão' (Panmela Castro)",
+        category: "Arte & Exposição",
+        time: "10h30 às 19h00 (por sessões)",
+        location: "Instituto 12 – Av. Ataulfo de Paiva, 1.120, subsolo, Leblon (Entrada pelo SO_Lo Café)",
+        price: "Gratuito (Sympla)",
+        description:
+          "Sessões especiais de visitação no feriado à mostra 'Reconexão', da artista visual carioca Panmela Castro (curadoria de João Vergara), apresentando obras que dialogam com ancestralidade, o feminino e a arte contemporânea.",
+        highlights: [
+          "Panmela Castro",
+          "Curadoria João Vergara",
+          "Arte Contemporânea"
+        ],
+        sourceName: "Agência Brasil (EBC)",
+        sourceUrl: "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/circuito-cultural-comeca-no-rio-com-celebracao-da-consciencia-negra"
+      },
+      {
+        startTime: "11:00",
+        startLabel: "11h00",
         title: "Consciência Negra no MUHCAB: Homenagens a Conceição Evaristo e DJ Dom Filó + Feijoada da Dida",
         category: "Debate & Memória",
-        time: "A partir das 11h (Dia Inteiro)",
+        time: "A partir das 11h00 (Dia Inteiro)",
         location: "MUHCAB (Museu da História e da Cultura Afro-Brasileira) – Rua Pedro Ernesto, 80, Gamboa",
         price: "Gratuito / Sympla",
         description:
@@ -247,9 +288,11 @@ const scheduleData = [
         sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
       },
       {
+        startTime: "13:00",
+        startLabel: "13h00",
         title: "Festival Terreiro 20/11 – Terreiro de Crioulo, Sombrinha e Jongo da Serrinha",
         category: "Música & Samba",
-        time: "A partir das 13h",
+        time: "A partir das 13h00",
         location: "Praça das Juras (em frente à Nave do Conhecimento) – Padre Miguel, RJ",
         price: "Gratuito (Sympla)",
         description:
@@ -264,41 +307,11 @@ const scheduleData = [
         sourceUrl: "https://www.sympla.com.br/evento/festival-terreiro-20-11-praca-das-juras-sombrinha-jongo-da-serrinha-terreiro-de-crioulo/3545289"
       },
       {
-        title: "Cortejo do Afoxé Filhos de Gandhi e Lavagem da Praça Tiradentes",
-        category: "Música & Samba",
-        time: "10h às 18h",
-        location: "Praça Tiradentes (Centro) e Palcos na Zona Oeste (Realengo, Vila Aliança e Santa Cruz)",
-        price: "Entrada Gratuita",
-        description:
-          "Ponto alto das celebrações públicas do feriado de 20 de novembro: lavagem simbólica da Praça Tiradentes, cortejo do tradicional Afoxé Filhos de Gandhi, feiras gastronômicas e shows simultâneos.",
-        highlights: [
-          "Afoxé Filhos de Gandhi",
-          "Lavagem Simbólica",
-          "Shows de Rua"
-        ],
-        sourceName: "Sedhir-RJ / Instagram (@p/DfhxoXLTSfC)",
-        sourceUrl: "https://www.instagram.com/p/DfhxoXLTSfC/"
-      },
-      {
-        title: "Circuito Cultural Instituto 12 – Exposição 'Reconexão' (Panmela Castro)",
-        category: "Arte & Exposição",
-        time: "10h30 às 19h (por sessões)",
-        location: "Instituto 12 – Av. Ataulfo de Paiva, 1.120, subsolo, Leblon (Entrada pelo SO_Lo Café)",
-        price: "Gratuito (Sympla)",
-        description:
-          "Sessões especiais de visitação no feriado à mostra 'Reconexão', da artista visual carioca Panmela Castro (curadoria de João Vergara), apresentando obras que dialogam com ancestralidade, o feminino e a arte contemporânea.",
-        highlights: [
-          "Panmela Castro",
-          "Curadoria João Vergara",
-          "Arte Contemporânea"
-        ],
-        sourceName: "Agência Brasil (EBC)",
-        sourceUrl: "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/circuito-cultural-comeca-no-rio-com-celebracao-da-consciencia-negra"
-      },
-      {
+        startTime: "14:00",
+        startLabel: "14h00",
         title: "Festival Madureira – Especial Consciência Negra (Abertura)",
         category: "Música & Samba",
-        time: "A partir das 14h",
+        time: "A partir das 14h00",
         location: "Viaduto Negrão de Lima – Madureira",
         price: "Entrada Gratuita",
         description:
@@ -310,6 +323,25 @@ const scheduleData = [
         ],
         sourceName: "Visit Rio",
         sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
+      },
+      {
+        startTime: "20:00",
+        startLabel: "20h00",
+        title: "Samba do Poeira Pura na Casa Savana",
+        category: "Música & Samba",
+        time: "20h00 às 03h00",
+        location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
+        price: "Ingressos / Lista via Instagram",
+        description:
+          "Edição especial de Dia da Consciência Negra do tradicional Samba do Poeira Pura na Casa Savana! Idealizada pelos músicos Rogério Família e Mateus Professor, a roda celebra o samba de raiz, a ancestralidade e a resistência preta no coração da Pequena África.",
+        highlights: [
+          "Poeira Pura",
+          "Casa Savana (20h)",
+          "Rogério Família & Mateus Professor",
+          "Samba e Ancestralidade"
+        ],
+        sourceName: "Instagram (@p/DfaofGUomT6)",
+        sourceUrl: "https://www.instagram.com/p/DfaofGUomT6/"
       }
     ]
   },
@@ -322,9 +354,11 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
+        startTime: "10:00",
+        startLabel: "10h00",
         title: "Oficina 'Saberes do Ventre' – Técnicas Expressivas e Arteterapia no MUHCAB",
         category: "Arte & Exposição",
-        time: "10h às 13h",
+        time: "10h00 às 13h00",
         location: "MUHCAB – Rua Pedro Ernesto, 80, Gamboa (Pequena África)",
         price: "Inscrições via Sympla",
         description:
@@ -339,9 +373,47 @@ const scheduleData = [
         sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
       },
       {
+        startTime: "10:30",
+        startLabel: "10h30",
+        title: "Oficinas no Museu do Amanhã: 'Um Baobá de Histórias' e 'Re.inventar a Si'",
+        category: "Infantil & Família",
+        time: "10h30 e 14h30",
+        location: "Museu do Amanhã – Praça Mauá, 1, Centro (Pequena África)",
+        price: "Consulte Bilheteria",
+        description:
+          "Às 10h30, a oficina 'Um Baobá de Histórias' convida crianças a criarem faixas carnavalescas inspiradas nas memórias das escolas de samba. Às 14h30, a atividade 'Re.inventar a Si' explora máscaras e identidade cultural.",
+        highlights: [
+          "Atividades Infantis (10h30)",
+          "Memória do Samba",
+          "Identidade Cultural (14h30)"
+        ],
+        sourceName: "Visit Rio",
+        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
+      },
+      {
+        startTime: "15:00",
+        startLabel: "15h00",
+        title: "Festival Madureira & Tradicional Baile Charme no Viaduto",
+        category: "Música & Samba",
+        time: "A partir das 15h00 (Tarde e Noite)",
+        location: "Viaduto Negrão de Lima – Madureira",
+        price: "Entrada Gratuita / Ingressos Locais",
+        description:
+          "Sábado de música negra carioca em Madureira com continuidade dos shows gratuitos do festival à tarde e a energia inconfundível do Baile Charme do Viaduto à noite.",
+        highlights: [
+          "Baile Charme",
+          "Black Music",
+          "Madureira"
+        ],
+        sourceName: "Visit Rio",
+        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
+      },
+      {
+        startTime: "16:00",
+        startLabel: "16h00",
         title: "Circuito Cultural Instituto 12 – Debate & Performance 'Vozes de Nós' (Baque Mulher)",
         category: "Arte & Exposição",
-        time: "16h às 18h40",
+        time: "16h00 às 18h40",
         location: "Instituto 12 – Av. Ataulfo de Paiva, 1.120, subsolo, Leblon",
         price: "Gratuito (Sympla)",
         description:
@@ -356,9 +428,11 @@ const scheduleData = [
         sourceUrl: "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/circuito-cultural-comeca-no-rio-com-celebracao-da-consciencia-negra"
       },
       {
+        startTime: "16:00",
+        startLabel: "16h00",
         title: "Mapa da Mina na Casa Savana (Edição Especial)",
         category: "Música & Samba",
-        time: "A partir das 16h",
+        time: "A partir das 16h00",
         location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
         price: "Consulte Local",
         description:
@@ -370,38 +444,6 @@ const scheduleData = [
         ],
         sourceName: "Instagram / Casa Savana",
         sourceUrl: "https://www.instagram.com/p/DfhxoXLTSfC/"
-      },
-      {
-        title: "Oficinas no Museu do Amanhã: 'Um Baobá de Histórias' e 'Re.inventar a Si'",
-        category: "Infantil & Família",
-        time: "10h30 e 14h30",
-        location: "Museu do Amanhã – Praça Mauá, 1, Centro (Pequena África)",
-        price: "Consulte Bilheteria",
-        description:
-          "Às 10h30, a oficina 'Um Baobá de Histórias' convida crianças a criarem faixas carnavalescas inspiradas nas memórias das escolas de samba. Às 14h30, a atividade 'Re.inventar a Si' explora máscaras e identidade cultural.",
-        highlights: [
-          "Atividades Infantis",
-          "Memória do Samba",
-          "Identidade Cultural"
-        ],
-        sourceName: "Visit Rio",
-        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
-      },
-      {
-        title: "Festival Madureira & Tradicional Baile Charme no Viaduto",
-        category: "Música & Samba",
-        time: "Tarde e Noite",
-        location: "Viaduto Negrão de Lima – Madureira",
-        price: "Entrada Gratuita / Ingressos Locais",
-        description:
-          "Sábado de música negra carioca em Madureira com continuidade dos shows gratuitos do festival e a energia inconfundível do Baile Charme do Viaduto.",
-        highlights: [
-          "Baile Charme",
-          "Black Music",
-          "Madureira"
-        ],
-        sourceName: "Visit Rio",
-        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
       }
     ]
   },
@@ -414,9 +456,48 @@ const scheduleData = [
     isHoliday: false,
     events: [
       {
+        startTime: "10:00",
+        startLabel: "10h00",
+        title: "Circuito Histórico Pequena África, Visitação ao MUHCAB & Encerramento Festival Madureira",
+        category: "Debate & Memória",
+        time: "10h00 às 18h00",
+        location: "Região Portuária (MUHCAB / Cais do Valongo) e Viaduto de Madureira",
+        price: "Acesso Livre",
+        description:
+          "Domingo ideal para percorrer os pontos históricos da Pequena África (Cais do Valongo, Jardim Suspenso do Valongo, Pedra do Sal e exposições de longa duração do MUHCAB) e aproveitar o último dia de programação em Madureira.",
+        highlights: [
+          "MUHCAB",
+          "Cais do Valongo",
+          "Pedra do Sal",
+          "Festival Madureira"
+        ],
+        sourceName: "Sympla • MUHCAB / Visit Rio",
+        sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+      },
+      {
+        startTime: "10:30",
+        startLabel: "10h30",
+        title: "Contação de Histórias 'ÁGUAS' e 'O Herói que Nunca Parou de Correr'",
+        category: "Infantil & Família",
+        time: "10h30, 11h40 e 14h30",
+        location: "Museu do Amanhã – Praça Mauá, 1, Centro",
+        price: "Consulte Bilheteria",
+        description:
+          "Programação educativa de domingo para toda a família: sessões de contação de histórias 'ÁGUAS' pela manhã (10h30 e 11h40) e, às 14h30, a narrativa inspiradora do maratonista etíope Abebe Bikila.",
+        highlights: [
+          "Contação de Histórias (10h30)",
+          "Abebe Bikila (14h30)",
+          "Praça Mauá"
+        ],
+        sourceName: "Visit Rio",
+        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
+      },
+      {
+        startTime: "16:00",
+        startLabel: "16h00",
         title: "Encerramento Circuito Cultural Instituto 12 – Show e Conversa com Toni Garrido",
         category: "Música & Samba",
-        time: "16h às 20h",
+        time: "16h00 às 20h00",
         location: "Instituto 12 – Av. Ataulfo de Paiva, 1.120, subsolo, Leblon",
         price: "Gratuito (Sympla)",
         description:
@@ -430,9 +511,11 @@ const scheduleData = [
         sourceUrl: "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/circuito-cultural-comeca-no-rio-com-celebracao-da-consciencia-negra"
       },
       {
+        startTime: "17:00",
+        startLabel: "17h00",
         title: "Grupo Awurê – 'Salve a Malandragem' na Casa Savana",
         category: "Música & Samba",
-        time: "A partir das 17h",
+        time: "A partir das 17h00",
         location: "Casa Savana – Rua Camerino, 162, Centro (Pequena África)",
         price: "Ingressos via Sympla / Local",
         description:
@@ -444,39 +527,6 @@ const scheduleData = [
         ],
         sourceName: "Instagram / Casa Savana",
         sourceUrl: "https://www.instagram.com/p/DfaofGUomT6/"
-      },
-      {
-        title: "Contação de Histórias 'ÁGUAS' e 'O Herói que Nunca Parou de Correr'",
-        category: "Infantil & Família",
-        time: "10h30, 11h40 e 14h30",
-        location: "Museu do Amanhã – Praça Mauá, 1, Centro",
-        price: "Consulte Bilheteria",
-        description:
-          "Programação educativa de domingo para toda a família: sessões de contação de histórias 'ÁGUAS' pela manhã (10h30 e 11h40) e, às 14h30, a narrativa inspiradora do maratonista etíope Abebe Bikila.",
-        highlights: [
-          "Contação de Histórias",
-          "Abebe Bikila",
-          "Praça Mauá"
-        ],
-        sourceName: "Visit Rio",
-        sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
-      },
-      {
-        title: "Circuito Histórico Pequena África, Visitação ao MUHCAB & Encerramento Festival Madureira",
-        category: "Debate & Memória",
-        time: "10h às 18h",
-        location: "Região Portuária (MUHCAB / Cais do Valongo) e Viaduto de Madureira",
-        price: "Acesso Livre",
-        description:
-          "Domingo ideal para percorrer os pontos históricos da Pequena África (Cais do Valongo, Jardim Suspenso do Valongo, Pedra do Sal e exposições de longa duração do MUHCAB) e aproveitar o último dia de programação em Madureira.",
-        highlights: [
-          "MUHCAB",
-          "Cais do Valongo",
-          "Pedra do Sal",
-          "Festival Madureira"
-        ],
-        sourceName: "Sympla • MUHCAB / Visit Rio",
-        sourceUrl: "https://www.sympla.com.br/eventos?s=Muhcab&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
       }
     ]
   }
@@ -497,18 +547,21 @@ function renderSchedule() {
   const filteredDays = scheduleData
     .filter((day) => activeDay === "all" || day.date === activeDay)
     .map((day) => {
-      const matchingEvents = day.events.filter((ev) => {
-        const matchesCategory =
-          activeCategory === "all" || ev.category === activeCategory;
-        const matchesSearch =
-          !normalizedQuery ||
-          ev.title.toLowerCase().includes(normalizedQuery) ||
-          ev.description.toLowerCase().includes(normalizedQuery) ||
-          ev.location.toLowerCase().includes(normalizedQuery) ||
-          ev.highlights.some((h) => h.toLowerCase().includes(normalizedQuery));
+      const matchingEvents = day.events
+        .filter((ev) => {
+          const matchesCategory =
+            activeCategory === "all" || ev.category === activeCategory;
+          const matchesSearch =
+            !normalizedQuery ||
+            ev.title.toLowerCase().includes(normalizedQuery) ||
+            ev.description.toLowerCase().includes(normalizedQuery) ||
+            ev.location.toLowerCase().includes(normalizedQuery) ||
+            ev.time.toLowerCase().includes(normalizedQuery) ||
+            ev.highlights.some((h) => h.toLowerCase().includes(normalizedQuery));
 
-        return matchesCategory && matchesSearch;
-      });
+          return matchesCategory && matchesSearch;
+        })
+        .sort((a, b) => a.startTime.localeCompare(b.startTime));
 
       return { ...day, events: matchingEvents };
     })
@@ -565,8 +618,11 @@ function renderSchedule() {
             <article class="event-card">
               <div>
                 <div class="event-top-meta">
-                  <span class="event-category">${ev.category}</span>
-                  <span class="event-price">${ev.price}</span>
+                  <span class="event-time-badge">🕒 Início: ${ev.startLabel}</span>
+                  <div class="event-badges-right">
+                    <span class="event-category">${ev.category}</span>
+                    <span class="event-price">${ev.price}</span>
+                  </div>
                 </div>
                 <h3 class="event-title">${ev.title}</h3>
                 <p class="event-description">${ev.description}</p>

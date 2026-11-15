@@ -404,10 +404,32 @@ body {
 
 .event-top-meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.85rem;
+}
+
+.event-time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  background: var(--accent-gold);
+  color: #110d0a;
+  letter-spacing: 0.01em;
+}
+
+.event-badges-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .event-category {
