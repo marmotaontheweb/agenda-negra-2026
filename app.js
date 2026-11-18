@@ -538,7 +538,28 @@ const categorySelect = document.getElementById("categorySelect");
 const dayTabs = document.querySelectorAll(".day-tab");
 const totalEventsCountEl = document.getElementById("totalEventsCount");
 
-let activeDay = "all";
+function getInitialDay() {
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const todayStr = `${yyyy}-${mm}-${dd}`;
+
+  const matchingDay = scheduleData.find((d) => d.date === todayStr);
+  if (matchingDay) {
+    return todayStr;
+  }
+
+  // Caso o mês/ano do sistema seja diferente, mas o dia do mês esteja entre 16 e 22:
+  const dayOfMonthTarget = `2026-11-${dd}`;
+  if (scheduleData.some((d) => d.date === dayOfMonthTarget)) {
+    return dayOfMonthTarget;
+  }
+
+  return "all";
+}
+
+let activeDay = getInitialDay();
 let activeCategory = "all";
 let searchQuery = "";
 
@@ -1025,5 +1046,6 @@ if (backToTopBtn) {
   });
 }
 
-// Inicializar a agenda oficial
+// Inicializar a agenda oficial selecionando o dia corrente
+updateActiveTab();
 renderSchedule();
