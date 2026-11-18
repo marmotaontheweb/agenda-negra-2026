@@ -536,12 +536,27 @@ const scheduleContainer = document.getElementById("scheduleContainer");
 const searchInput = document.getElementById("searchInput");
 const categorySelect = document.getElementById("categorySelect");
 const dayTabs = document.querySelectorAll(".day-tab");
+const totalEventsCountEl = document.getElementById("totalEventsCount");
 
 let activeDay = "all";
 let activeCategory = "all";
 let searchQuery = "";
 
+// Limpar eventuais sugestões salvas localmente em testes anteriores
+try {
+  localStorage.removeItem("conscienciaNegra2026_userSuggestions");
+} catch (err) {
+  // Ignorar caso localStorage esteja bloqueado
+}
+
+function updateTotalCount() {
+  if (!totalEventsCountEl) return;
+  const total = scheduleData.reduce((acc, day) => acc + day.events.length, 0);
+  totalEventsCountEl.textContent = `${total} Atrações`;
+}
+
 function renderSchedule() {
+  updateTotalCount();
   const normalizedQuery = searchQuery.trim().toLowerCase();
 
   const filteredDays = scheduleData
@@ -620,6 +635,11 @@ function renderSchedule() {
                 <div class="event-top-meta">
                   <span class="event-time-badge">🕒 Início: ${ev.startLabel}</span>
                   <div class="event-badges-right">
+                    ${
+                      ev.isCommunitySuggestion
+                        ? `<span class="community-badge">🤝 Sugestão</span>`
+                        : ""
+                    }
                     <span class="event-category">${ev.category}</span>
                     <span class="event-price">${ev.price}</span>
                   </div>
@@ -642,9 +662,15 @@ function renderSchedule() {
                   <span>📍</span>
                   <span><strong>Local:</strong> ${ev.location}</span>
                 </div>
-                <a href="${ev.sourceUrl}" target="_blank" rel="noopener noreferrer" class="event-link">
-                  Consultar fonte (${ev.sourceName}) ↗
-                </a>
+                ${
+                  ev.sourceUrl
+                    ? `<a href="${ev.sourceUrl}" target="_blank" rel="noopener noreferrer" class="event-link">
+                        Consultar fonte (${ev.sourceName || "Link Oficial"}) ↗
+                      </a>`
+                    : `<span class="meta-line"><span>📣</span><span><strong>Organização:</strong> ${
+                        ev.sourceName || "Comunidade"
+                      }</span></span>`
+                }
               </div>
             </article>
           `
@@ -683,5 +709,321 @@ categorySelect.addEventListener("change", (e) => {
   renderSchedule();
 });
 
-// Inicializar a agenda
+/* ==========================================================================
+   Validação e Envio do Formulário de Sugestão de Eventos (Google Sheets)
+   ========================================================================== */
+
+// URL DE IMPLANTAÇÃO DO GOOGLE APPS SCRIPT (Web App URL):
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzXt5tjB8Al9HwCi1DQKN_NDlVvLmsYS3XwI4VOcEGVFqIPQg4iKBo8co4dQZzDgkUHlg/exec";
+
+const suggestForm = document.getElementById("suggestEventForm");
+const contactPhoneInput = document.getElementById("contactPhone");
+const contactEmailInput = document.getElementById("contactEmail");
+const formSuccessBanner = document.getElementById("formSuccessBanner");
+
+// Máscara automática para telefone brasileiro: (DD) 9XXXX-XXXX ou (DD) XXXX-XXXX
+function formatPhoneBR(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length === 0) return "";
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  }
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+}
+
+// Validação rigorosa de telefone brasileiro (DDD válido + 10 ou 11 dígitos)
+function isValidPhoneBR(value) {
+  const digits = value.replace(/\D/g, "");
+  if (digits.length !== 10 && digits.length !== 11) return false;
+
+  // Bloquear sequências repetidas como 99999999999 ou 00000000000
+  if (/^(\d)\1+$/.test(digits)) return false;
+
+  const ddd = parseInt(digits.slice(0, 2), 10);
+  if (ddd < 11 || ddd > 99 || ddd % 10 === 0) return false;
+
+  // Se tiver 11 dígitos (celular), o terceiro dígito deve ser 9
+  if (digits.length === 11 && digits[2] !== "9") return false;
+
+  return true;
+}
+
+// Validação rigorosa de e-mail
+function isValidEmail(value) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(value.trim());
+}
+
+// Validação opcional de URL
+function isValidOptionalUrl(value) {
+  const trimmed = value.trim();
+  if (!trimmed) return true;
+  try {
+    const parsed = new URL(trimmed);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function setFieldValidation(inputEl, errorElId, errorMessage) {
+  const errorEl = document.getElementById(errorElId);
+  if (errorMessage) {
+    inputEl.classList.add("input-invalid");
+    inputEl.classList.remove("input-valid");
+    if (errorEl) errorEl.textContent = errorMessage;
+    return false;
+  } else {
+    inputEl.classList.remove("input-invalid");
+    if (inputEl.value.trim() !== "") {
+      inputEl.classList.add("input-valid");
+    } else {
+      inputEl.classList.remove("input-valid");
+    }
+    if (errorEl) errorEl.textContent = "";
+    return true;
+  }
+}
+
+if (contactPhoneInput) {
+  contactPhoneInput.addEventListener("input", (e) => {
+    e.target.value = formatPhoneBR(e.target.value);
+    if (e.target.value.length > 0) {
+      setFieldValidation(
+        contactPhoneInput,
+        "contactPhoneError",
+        isValidPhoneBR(e.target.value)
+          ? ""
+          : "Informe um telefone válido com DDD. Ex: (21) 99999-9999"
+      );
+    }
+  });
+}
+
+if (contactEmailInput) {
+  contactEmailInput.addEventListener("input", (e) => {
+    if (e.target.value.length > 0) {
+      setFieldValidation(
+        contactEmailInput,
+        "contactEmailError",
+        isValidEmail(e.target.value)
+          ? ""
+          : "Informe um endereço de e-mail válido (ex: nome@dominio.com.br)"
+      );
+    }
+  });
+}
+
+if (suggestForm) {
+  suggestForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    formSuccessBanner.hidden = true;
+
+    const titleEl = document.getElementById("eventTitle");
+    const categoryEl = document.getElementById("eventCategory");
+    const dateEl = document.getElementById("eventDate");
+    const startTimeEl = document.getElementById("eventStartTime");
+    const endTimeEl = document.getElementById("eventEndTime");
+    const priceEl = document.getElementById("eventPrice");
+    const locationEl = document.getElementById("eventLocation");
+    const descriptionEl = document.getElementById("eventDescription");
+    const highlightsEl = document.getElementById("eventHighlights");
+    const sourceNameEl = document.getElementById("eventSourceName");
+    const sourceUrlEl = document.getElementById("eventSourceUrl");
+    const contactNameEl = document.getElementById("contactName");
+
+    let isFormValid = true;
+
+    if (
+      !setFieldValidation(
+        titleEl,
+        "eventTitleError",
+        titleEl.value.trim().length >= 5
+          ? ""
+          : "Digite o título do evento (mínimo de 5 caracteres)."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        categoryEl,
+        "eventCategoryError",
+        categoryEl.value ? "" : "Selecione uma categoria."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        dateEl,
+        "eventDateError",
+        dateEl.value ? "" : "Escolha o dia do evento (16 a 22/11)."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        startTimeEl,
+        "eventStartTimeError",
+        /^\d{2}:\d{2}$/.test(startTimeEl.value)
+          ? ""
+          : "Informe o horário de início."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        priceEl,
+        "eventPriceError",
+        priceEl.value.trim() ? "" : "Informe o tipo de entrada (ex: Gratuita)."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        locationEl,
+        "eventLocationError",
+        locationEl.value.trim().length >= 5
+          ? ""
+          : "Informe o local e endereço do evento."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        descriptionEl,
+        "eventDescriptionError",
+        descriptionEl.value.trim().length >= 15
+          ? ""
+          : "Descreva a programação com pelo menos 15 caracteres."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        sourceUrlEl,
+        "eventSourceUrlError",
+        isValidOptionalUrl(sourceUrlEl.value)
+          ? ""
+          : "Insira um link válido começando com https:// ou http://"
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        contactNameEl,
+        "contactNameError",
+        contactNameEl.value.trim().length >= 3
+          ? ""
+          : "Informe o seu nome ou da produção."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        contactEmailInput,
+        "contactEmailError",
+        isValidEmail(contactEmailInput.value)
+          ? ""
+          : "Informe um e-mail válido (ex: contato@dominio.com.br)."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (
+      !setFieldValidation(
+        contactPhoneInput,
+        "contactPhoneError",
+        isValidPhoneBR(contactPhoneInput.value)
+          ? ""
+          : "Informe um telefone válido com DDD (ex: (21) 99999-9999)."
+      )
+    ) {
+      isFormValid = false;
+    }
+
+    if (!isFormValid) return;
+
+    const submittedTitle = titleEl.value.trim();
+    const submitBtn = suggestForm.querySelector(".btn-submit-event");
+    const originalBtnText = submitBtn ? submitBtn.textContent : "";
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Encaminhando sugestão...";
+    }
+
+    // Enviar nativamente pelo <form method="POST" target="googleSheetIframe">
+    // Isso evita bloqueios de CORS e de origem file:// nos navegadores (Opera, Chrome, Edge)
+    suggestForm.submit();
+
+    setTimeout(() => {
+      formSuccessBanner.innerHTML = `✅ Sugestão <strong>"${submittedTitle}"</strong> encaminhada com sucesso! As informações foram enviadas para avaliação e triagem da equipe antes da publicação.`;
+      formSuccessBanner.hidden = false;
+
+      suggestForm.reset();
+      suggestForm
+        .querySelectorAll(".input-valid, .input-invalid")
+        .forEach((el) => el.classList.remove("input-valid", "input-invalid"));
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    }, 1200);
+  });
+
+  document.getElementById("clearFormBtn")?.addEventListener("click", () => {
+    formSuccessBanner.hidden = true;
+    suggestForm
+      .querySelectorAll(".input-valid, .input-invalid")
+      .forEach((el) => el.classList.remove("input-valid", "input-invalid"));
+    suggestForm
+      .querySelectorAll(".field-error")
+      .forEach((el) => (el.textContent = ""));
+  });
+}
+
+// Botão Flutuante Voltar ao Topo
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+if (backToTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 320) {
+      backToTopBtn.classList.add("visible");
+    } else {
+      backToTopBtn.classList.remove("visible");
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+// Inicializar a agenda oficial
 renderSchedule();

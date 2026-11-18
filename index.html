@@ -31,7 +31,7 @@
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <strong>22+ Atrações</strong>
+          <strong id="totalEventsCount">23+ Atrações</strong>
           <span>culturais e gratuitas</span>
         </div>
         <div class="stat-divider"></div>
@@ -39,6 +39,13 @@
           <strong>20/11 (Sexta)</strong>
           <span>Feriado Nacional</span>
         </div>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="#sugerir-evento" class="btn-suggest-hero">
+          <span>✨ Conhece ou organiza algum evento?</span>
+          <strong>+ Enviar Sugestão de Evento</strong>
+        </a>
       </div>
     </div>
   </header>
@@ -110,6 +117,238 @@
     <!-- Lista de Eventos Organizada por Dia -->
     <div id="scheduleContainer" class="schedule-container"></div>
 
+    <!-- Seção de Envio de Sugestão de Eventos -->
+    <section class="suggest-section" id="sugerir-evento" aria-labelledby="suggestTitle">
+      <div class="suggest-card">
+        <div class="suggest-header">
+          <div>
+            <span class="pill-badge">🤝 Agenda Colaborativa</span>
+            <h2 id="suggestTitle">Sugerir um Evento para a Agenda</h2>
+            <p>
+              Organiza ou conhece uma roda de samba, feira preta, oficina, debate ou exposição entre os dias <strong>16 e 22 de novembro de 2026</strong>? Encaminhe os dados abaixo. Todas as sugestões passam por uma triagem de verificação e segurança antes de serem publicadas no site.
+            </p>
+          </div>
+        </div>
+
+        <!-- Iframe oculto para permitir envio nativo do formulário ao Google Sheets mesmo abrindo via file:// -->
+        <iframe name="googleSheetIframe" id="googleSheetIframe" style="display:none;" title="Envio Planilha"></iframe>
+
+        <form
+          id="suggestEventForm"
+          class="suggest-form"
+          action="https://script.google.com/macros/s/AKfycbzXt5tjB8Al9HwCi1DQKN_NDlVvLmsYS3XwI4VOcEGVFqIPQg4iKBo8co4dQZzDgkUHlg/exec"
+          method="POST"
+          target="googleSheetIframe"
+          novalidate
+        >
+          <!-- Bloco 1: Informações do Evento -->
+          <fieldset class="form-fieldset">
+            <legend>1. Dados do Evento</legend>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="eventTitle">Nome / Título do Evento <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="eventTitle"
+                  name="titulo"
+                  placeholder="Ex: Roda de Samba da Pequena África"
+                  required
+                  minlength="5"
+                />
+                <span class="field-error" id="eventTitleError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="eventCategory">Categoria <span class="req">*</span></label>
+                <select id="eventCategory" name="categoria" required>
+                  <option value="">Selecione uma categoria...</option>
+                  <option value="Música & Samba">🎵 Música & Samba</option>
+                  <option value="Arte & Exposição">🎨 Arte & Exposição</option>
+                  <option value="Feira & Empreendedorismo">🛍️ Feira & Empreendedorismo</option>
+                  <option value="Debate & Memória">🗣️ Debate & Memória</option>
+                  <option value="Infantil & Família">👧 Infantil & Família</option>
+                </select>
+                <span class="field-error" id="eventCategoryError"></span>
+              </div>
+            </div>
+
+            <div class="form-grid-4">
+              <div class="form-group">
+                <label for="eventDate">Dia do Evento <span class="req">*</span></label>
+                <select id="eventDate" name="data" required>
+                  <option value="">Escolha o dia...</option>
+                  <option value="2026-11-16">16/11/2026 (Segunda-feira)</option>
+                  <option value="2026-11-17">17/11/2026 (Terça-feira)</option>
+                  <option value="2026-11-18">18/11/2026 (Quarta-feira)</option>
+                  <option value="2026-11-19">19/11/2026 (Quinta-feira)</option>
+                  <option value="2026-11-20">20/11/2026 (Sexta - Feriado ★)</option>
+                  <option value="2026-11-21">21/11/2026 (Sábado)</option>
+                  <option value="2026-11-22">22/11/2026 (Domingo)</option>
+                </select>
+                <span class="field-error" id="eventDateError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="eventStartTime">Horário de Início <span class="req">*</span></label>
+                <input
+                  type="time"
+                  id="eventStartTime"
+                  name="h_inicio"
+                  required
+                />
+                <span class="field-hint">Usado para ordenar na agenda</span>
+                <span class="field-error" id="eventStartTimeError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="eventEndTime">Horário de Término</label>
+                <input
+                  type="time"
+                  id="eventEndTime"
+                  name="h_fim"
+                />
+                <span class="field-hint">Opcional (formato HH:MM)</span>
+                <span class="field-error" id="eventEndTimeError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="eventPrice">Entrada / Ingresso <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="eventPrice"
+                  name="entrada"
+                  placeholder="Ex: Entrada Gratuita, Sympla, R$ 20"
+                  required
+                />
+                <span class="field-error" id="eventPriceError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="eventLocation">Local e Endereço Completo <span class="req">*</span></label>
+              <input
+                type="text"
+                id="eventLocation"
+                name="local"
+                placeholder="Ex: Praça Tiradentes – Centro, Rio de Janeiro"
+                required
+                minlength="5"
+              />
+              <span class="field-error" id="eventLocationError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="eventDescription">Descrição da Programação <span class="req">*</span></label>
+              <textarea
+                id="eventDescription"
+                name="descricao"
+                rows="3"
+                placeholder="Descreva o que acontecerá no evento, contexto cultural, convidados e orientações ao público..."
+                required
+                minlength="15"
+              ></textarea>
+              <span class="field-error" id="eventDescriptionError"></span>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="eventHighlights">Atrações / Destaques (separados por vírgula)</label>
+                <input
+                  type="text"
+                  id="eventHighlights"
+                  name="atracoes"
+                  placeholder="Ex: Roda de Samba, Capoeira, Feira Afro"
+                />
+                <span class="field-hint">Aparecerão como etiquetas no cartão</span>
+              </div>
+
+              <div class="form-group">
+                <label for="eventSourceName">Nome da Fonte / Organização</label>
+                <input
+                  type="text"
+                  id="eventSourceName"
+                  name="fonte"
+                  placeholder="Ex: Instagram / Coletivo Afro"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="eventSourceUrl">Link Oficial (Instagram, Sympla ou Site)</label>
+                <input
+                  type="url"
+                  id="eventSourceUrl"
+                  name="link"
+                  placeholder="https://www.instagram.com/..."
+                />
+                <span class="field-error" id="eventSourceUrlError"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Bloco 2: Contato do Responsável (E-mail e Telefone Válidos) -->
+          <fieldset class="form-fieldset">
+            <legend>2. Dados de Contato para Validação (Não ficam públicos no cartão)</legend>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="contactName">Seu Nome / Indicado por <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="contactName"
+                  name="indicado_por"
+                  placeholder="Ex: Dandara Silva"
+                  required
+                  minlength="3"
+                />
+                <span class="field-error" id="contactNameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail">E-mail Válido <span class="req">*</span></label>
+                <input
+                  type="email"
+                  id="contactEmail"
+                  name="email"
+                  placeholder="nome@exemplo.com.br"
+                  autocomplete="email"
+                  required
+                />
+                <span class="field-hint">Ex: contato@evento.com.br</span>
+                <span class="field-error" id="contactEmailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactPhone">Telefone / WhatsApp com DDD <span class="req">*</span></label>
+                <input
+                  type="tel"
+                  id="contactPhone"
+                  name="telefone"
+                  placeholder="(21) 99999-9999"
+                  maxlength="15"
+                  autocomplete="tel"
+                  required
+                />
+                <span class="field-hint">Formato válido: (DD) 9XXXX-XXXX</span>
+                <span class="field-error" id="contactPhoneError"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit-event">
+              ✨ Encaminhar sugestão
+            </button>
+            <button type="reset" class="btn-reset-form" id="clearFormBtn">
+              Limpar Campos
+            </button>
+          </div>
+
+          <div id="formSuccessBanner" class="form-success-banner" hidden></div>
+        </form>
+      </div>
+    </section>
+
     <!-- Fontes e Links de Consulta -->
     <section class="sources-section" id="fontes">
       <div class="sources-card">
@@ -166,8 +405,23 @@
     <div class="container footer-inner">
       <p><strong>Agenda Cultural – Semana da Consciência Negra 2026</strong> • Rio de Janeiro, RJ (16 a 22 de novembro de 2026)</p>
       <p class="footer-note">A maioria dos eventos possui entrada gratuita. Recomendamos chegar com antecedência ou verificar a retirada prévia de ingressos no Sympla.</p>
+      <p class="footer-note">versão 1.4.1</p>
     </div>
   </footer>
+
+  <!-- Botão Flutuante Voltar ao Topo -->
+  <button
+    type="button"
+    id="backToTopBtn"
+    class="back-to-top-btn"
+    aria-label="Voltar ao topo da página"
+    title="Voltar ao topo"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+    <span>Topo</span>
+  </button>
 
   <script src="app.js"></script>
 </body>
