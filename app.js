@@ -307,6 +307,65 @@ const scheduleData = [
         sourceUrl: "https://www.sympla.com.br/evento/festival-terreiro-20-11-praca-das-juras-sombrinha-jongo-da-serrinha-terreiro-de-crioulo/3545289"
       },
       {
+        startTime: "13:00",
+        startLabel: "13h00",
+        title: "Samba D’Coroa – 'Pelas Ruas da Vida' na Igreja da Penha",
+        category: "Música & Samba",
+        time: "A partir das 13h00",
+        location: "Igreja da Penha – Largo da Penha, 19, Penha, Rio de Janeiro",
+        price: "A partir de R$ 10 (Sympla)",
+        description:
+          "Edição especial de Dia da Consciência Negra do projeto Samba D’Coroa ('Pelas Ruas da Vida') no Largo da Penha, prometendo uma tarde de muito samba, alegria e celebração da cultura afro-brasileira.",
+        highlights: [
+          "Samba D’Coroa",
+          "Igreja da Penha",
+          "Pelas Ruas da Vida"
+        ],
+        sourceName: "Instagram (@sambadcoroa_oficial)",
+        sourceUrl: "https://www.instagram.com/p/DfUrl5MMSg7/"
+      },
+      {
+        startTime: "13:00",
+        startLabel: "13h00",
+        title: "Negro é Raiz – Dia de Zumbi (CCN Fruta do Pé)",
+        category: "Música & Samba",
+        time: "A partir das 13h00 (Roda e Gravação às 15h00)",
+        location: "Campo Grande Atlético Clube (Estádio Ítalo Del Cima) – Rua Arthur Rios, 1270, Campo Grande",
+        price: "Entrada Franca",
+        description:
+          "Edição especial do projeto 'Negro é Raiz' promovida pelo Centro de Cultura Negra Fruta do Pé celebrando o Dia de Zumbi dos Palmares como símbolo da resistência negra e luta pela liberdade, unindo cultura, samba, esporte e gravação de audiovisual.",
+        highlights: [
+          "CCN Fruta do Pé",
+          "Quintal Pedra Noventa",
+          "Semente do Fruta",
+          "Gravação Audiovisual",
+          "Campo Grande"
+        ],
+        sourceName: "Instagram (@ccnfrutadope)",
+        sourceUrl: "https://www.instagram.com/p/DfhWUQqgBAm/"
+      },
+      {
+        startTime: "14:00",
+        startLabel: "14h00",
+        title: "Festival Consciência Negra no Quintal da Lapa",
+        category: "Música & Samba",
+        time: "14h00 às 03h00",
+        location: "Quintal da Lapa – Rua do Lavradio, 75 (esquina com Av. Chile), Lapa, Rio de Janeiro",
+        price: "Entrada Colaborativa (Sympla)",
+        description:
+          "Celebração da ancestralidade, cultura e resistência no Festival Consciência Negra do Quintal da Lapa, com maratona de rodas de samba, escola de samba convidada, DJs e gastronomia das 14h às 03h.",
+        highlights: [
+          "Pagode da Garagem",
+          "Unidos de Vila Isabel",
+          "Quintal da Magia",
+          "Tendinha da Sorte",
+          "Motivo pra Beber",
+          "DJ Júlio Rodrigues & DJ May"
+        ],
+        sourceName: "Instagram (@pagodedagaragemoficial)",
+        sourceUrl: "https://www.instagram.com/p/Df47ojzAHDE/"
+      },
+      {
         startTime: "14:00",
         startLabel: "14h00",
         title: "Festival Madureira – Especial Consciência Negra (Abertura)",
@@ -323,6 +382,25 @@ const scheduleData = [
         ],
         sourceName: "Visit Rio",
         sourceUrl: "https://visitrio.com.br/feriado-consciencia-negra-rio-de-janeiro/"
+      },
+      {
+        startTime: "19:00",
+        startLabel: "19h00",
+        title: "Sambotica na Capiberibe 27",
+        category: "Música & Samba",
+        time: "A partir das 19h00",
+        location: "Capiberibe 27 – Rua Capiberibe, 27, Santo Cristo (Pequena África)",
+        price: "Ingressos na Bio / Local",
+        description:
+          "Feriado da Consciência Negra com a roda de samba do grupo Sambotica na Rua Capiberibe (Santo Cristo), celebrando a identidade negra com muito samba, charme e discotecagem nos intervalos.",
+        highlights: [
+          "Sambotica",
+          "Claudinho DJ (Charme)",
+          "DJ Tales Mulatu",
+          "Capiberibe 27 (Santo Cristo)"
+        ],
+        sourceName: "Instagram (@sambotica.oficial)",
+        sourceUrl: "https://www.instagram.com/p/Df3QgaPMKHH/"
       },
       {
         startTime: "20:00",
